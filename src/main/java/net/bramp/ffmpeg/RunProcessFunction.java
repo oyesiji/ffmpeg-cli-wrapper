@@ -28,7 +28,7 @@ public class RunProcessFunction implements ProcessFunction {
     if (LOG.isInfoEnabled()) {
       LOG.info("{}", Joiner.on(" ").join(args));
     }
-
+    System.out.println("##########################" + args);
     ProcessBuilder builder = new ProcessBuilder(args);
     if (workingDirectory != null) {
       builder.directory(workingDirectory);

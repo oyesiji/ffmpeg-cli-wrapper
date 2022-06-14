@@ -56,6 +56,7 @@ public class FFmpegBuilder {
     }
   }
 
+  boolean isPicture = false;
   // Global Settings
   boolean override = true;
   int pass = 0;
@@ -68,6 +69,7 @@ public class FFmpegBuilder {
   // Input settings
   String format;
   Long startOffset; // in millis
+
   boolean read_at_native_frame_rate = false;
   final List<String> inputs = new ArrayList<>();
   final Map<String, FFmpegProbeResult> inputProbes = new TreeMap<>();
@@ -229,6 +231,11 @@ public class FFmpegBuilder {
     return output;
   }
 
+  public FFmpegBuilder setIsPicture(boolean isPicture) {
+    this.isPicture = isPicture;
+    return this;
+  }
+
   /**
    * Adds new output file.
    *
@@ -325,6 +332,10 @@ public class FFmpegBuilder {
 
     if (!Strings.isNullOrEmpty(complexFilter)) {
       args.add("-filter_complex", complexFilter);
+    }
+
+    if (isPicture) {
+      args.add("-frames:v", "1");
     }
 
     for (FFmpegOutputBuilder output : this.outputs) {
