@@ -42,7 +42,7 @@
     </developers>
 
     <properties>
-        <base.java.version>1.8</base.java.version>
+        <base.java.version>12</base.java.version>
 
         <powermock.version>1.5.2</powermock.version>
 
@@ -327,6 +327,7 @@
                 <configuration>
                     <source>${base.java.version}</source>
                     <target>${base.java.version}</target>
+                    <release>${base.java.version}</release>
                     <compilerId>javac-with-errorprone</compilerId>
                     <forceJavacCompilerUse>true</forceJavacCompilerUse>
                     <showWarnings>true</showWarnings>
